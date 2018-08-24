@@ -16,7 +16,6 @@ public class Programa {
 
         System.out.println("Digite sua refeição separado por virgula: ");
         
-
         String entrada = NormalizacaoDePedido.normalizar(scanner.nextLine());
         
         if(ValidarPedido.isPedidoInvalido(entrada)) {

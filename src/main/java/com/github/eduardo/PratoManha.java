@@ -1,5 +1,6 @@
 package com.github.eduardo;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,8 +27,10 @@ public class PratoManha implements Prato {
         if(isPedidoValido(pedido)) {
             long quantidadeDeBebidas = pedido.stream().filter(p -> p.equals("3")).count();
             if(quantidadeDeBebidas > 1) pratos.put("3", "café (x"+quantidadeDeBebidas+")");
+        }else{
+            pedido.addAll(pratos.keySet());
         }
-        return pedido.stream().map(p -> pratos.getOrDefault(p, "erro")).distinct().collect(Collectors.joining(", "));
+        return pedido.stream().sorted().map(p -> pratos.getOrDefault(p, "erro")).distinct().collect(Collectors.joining(", "));
     }
     
     @Override

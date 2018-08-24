@@ -1,5 +1,6 @@
 package com.github.eduardo;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,8 +28,10 @@ public class PratoNoite implements Prato {
         if(isPedidoValido(pedido)) {
             long quantidadesDeAcompanhamentos = pedido.stream().filter(p -> p.equals("2")).count();
             if(quantidadesDeAcompanhamentos > 1) pratos.put("2", "batata (x"+quantidadesDeAcompanhamentos+")");
+        }else{
+            pedido.addAll(pratos.keySet());
         }
-        return pedido.stream().map(p -> pratos.getOrDefault(p, "erro")).distinct().collect(Collectors.joining(", "));
+        return pedido.stream().sorted().map(p -> pratos.getOrDefault(p, "erro")).distinct().collect(Collectors.joining(", "));
     }
     
     @Override

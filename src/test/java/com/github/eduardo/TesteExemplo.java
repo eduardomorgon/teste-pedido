@@ -100,4 +100,32 @@ public class TesteExemplo {
         
     }
     
+    @Test
+    public void testarEntradaComUmItemEComItemInexistenteManha() {
+        
+        String entrada = "manhã, 1, 4";
+        String entradaNormalizada = NormalizacaoDePedido.normalizar(entrada);
+        
+        PedidoUtil pedidoUtil = new PedidoUtil(entradaNormalizada);
+        List<String> pratos = pedidoUtil.extrairPratosPedido();
+        
+        String pratosSelecionados = new PratoManha().getPratosSelecionados(pratos);
+        
+        assertEquals("ovos, torrada, café, erro", pratosSelecionados);
+    }
+    
+    @Test
+    public void testarEntradaComUmItemEComItemInexistenteNoite() {
+        
+        String entrada = "manhã, 1, 4, 8";
+        String entradaNormalizada = NormalizacaoDePedido.normalizar(entrada);
+        
+        PedidoUtil pedidoUtil = new PedidoUtil(entradaNormalizada);
+        List<String> pratos = pedidoUtil.extrairPratosPedido();
+        
+        String pratosSelecionados = new PratoNoite().getPratosSelecionados(pratos);
+        
+        assertEquals("carne, batata, vinho, bolo, erro", pratosSelecionados);
+    }
+    
 }
