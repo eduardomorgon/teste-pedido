@@ -8,8 +8,6 @@ import java.text.Normalizer;
  */
 public class NormalizacaoDePedido {
     
-    
-    
     public static String normalizar(String entrada) {
 
         return Normalizer
@@ -18,23 +16,5 @@ public class NormalizacaoDePedido {
                 .replaceAll("( )+", "")
                 .toUpperCase();
     }
-
-//    public List<String> extrairPratosPedido() {
-//
-//        String pratos = entrada.replaceAll("^".concat("(MANHA|NOITE)").concat("((.|\\n)*?),"), "");
-//        return Arrays.asList(pratos.split("\\s*,\\s*"))
-//                .stream()
-//                .sorted()
-//                .collect(Collectors.toList());
-//    }
-//
-//    public TipoRefeicao getTipoRefeicaoDaEntrada() {
-//
-//        if (entrada.contains("MANHA")) {
-//            return TipoRefeicao.MANHA;
-//        } else {
-//            return TipoRefeicao.NOITE;
-//        }
-//    }
 
 }
